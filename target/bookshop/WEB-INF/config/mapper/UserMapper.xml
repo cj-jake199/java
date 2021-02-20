@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bookshop.dao.UserDAO">
+
+
+    <insert id="insertUser" parameterType="com.bookshop.entity.User">
+        insert into `shop_user`
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ID != null">`ID`, </if>
+            <if test="name != null">`name`, </if>
+            <if test="password != null">`password`, </if>
+            <if test="phonenum != null">`phonenum`, </if>
+            <if test="money != null">`money`, </if>
+            <if test="avatar != null">`avatar`, </if>
+            <if test="regtime != null">`regtime`, </if>
+            <if test="role != null">`role`, </if>
+            <if test="status != null">`status`, </if>
+            <if test="email != null">`email`, </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ID != null">#{ID}, </if>
+            <if test="name != null">#{name}, </if>
+            <if test="password != null">#{password}, </if>
+            <if test="phonenum != null">#{phonenum}, </if>
+            <if test="money != null">#{money}, </if>
+            <if test="regtime != null">#{regtime}, </if>
+            <if test="role != null">#{role}, </if>
+            <if test="status != null">#{status}, </if>
+            <if test="email != null">#{email}, </if>
+        </trim>
+    </insert>
+
+
+    <sql id="queryUserConditions">
+        <where>
+            <if test="ID != null">ID = #{ID}</if>
+            <if test="name != null">and name = #{name}</if>
+            <if test="password != null">and password = #{password}</if>
+            <if test="email != null">and email = #{email}</if>
+        </where>
+    </sql>
+
+    <select id="findUser" resultType="com.bookshop.entity.User">
+
+        SELECT * FROM `shop_user` WHERE `name` = #{name} AND `password` = #{password} limit 1
+
+    </select>
+
+
+
+</mapper>

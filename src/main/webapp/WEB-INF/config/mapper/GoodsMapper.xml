@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bookshop.dao.GoodsDAO">
+
+    <select id="getGoogsByHot" resultType="com.bookshop.entity.Goods">
+
+        select * from shop_goods order by role desc limit #{0}
+
+    </select>
+
+    <select id="getGoogsByGoodsID" resultType="com.bookshop.entity.Goods">
+
+        SELECT * FROM `shop_goods` WHERE `id`=#{goodsid} LIMIT 1
+
+    </select>
+
+    <select id="getGoodsByLastTime" resultType="com.bookshop.entity.Goods">
+
+        select * from shop_goods order by sellTime desc limit #{0}
+
+    </select>
+
+    <select id="getGoodsByCateID" resultType="com.bookshop.entity.Goods">
+        SELECT * FROM `shop_goods` WHERE `categoryid` = #{cateID} LIMIT #{num}
+    </select>
+</mapper>
