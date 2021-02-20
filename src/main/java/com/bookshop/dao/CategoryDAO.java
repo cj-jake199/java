@@ -10,7 +10,7 @@ public interface CategoryDAO {
 
     /**
      * 得到所有的商品分类
-     * @return 返回所有商品分类对应的集合
+     * @return 返回所有商品分类对应的集合2021-02-20
      */
     public List<Category> getCategory(int num);
 
